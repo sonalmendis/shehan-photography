@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components/macro";
-import GlobalStyles from "../Styles/GlobalStyles";
 
 //IMAGES
 import background from "../Images/background.jpg";
@@ -55,8 +54,6 @@ const Home = () => {
           Morbi eu
         </p>
       </div>
-
-      <GlobalStyles />
     </HomeWrapper>
   );
 };

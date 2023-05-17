@@ -12,24 +12,25 @@ import Logo from "../Images/dummy logo.svg";
 const HeaderWrapper = styled.div`
   position: fixed;
   background-color: transparent;
-
+  z-index: 99;
   transition: background-color 0.2s ease-out;
   color: white;
   width: 100%;
 
   // This is the outer container needed to have a smoothly working expandable mobile menu, this contains only the top parts
   .top-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 20px;
-    z-index: 3;
-    position: relative;
     background: rgba(0, 0, 0, 0);
     transition: all 0.2s;
     &.open {
       background: rgba(0, 0, 0, 1) !important;
+    }
+    .inner-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      z-index: 3;
+      position: relative;
     }
   }
 
@@ -62,7 +63,8 @@ const HeaderWrapper = styled.div`
     transition: all 0.2s;
     color: white;
     background: #393939;
-    padding: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     &.open {
       opacity: 1;
       margin-top: 0;
@@ -125,26 +127,35 @@ const Header = () => {
   return (
     <HeaderWrapper>
       <div
-        className={`top-container ${isMenuOpen ? "open" : ""}`}
+        className={`top-container ${
+          isMenuOpen ? "open" : ""
+        } vertical-padding-small`}
         style={backgroundStyle}
       >
-        <div className={`left-column`}>
-          <img className="logo" src={Logo} alt="logo" />
-        </div>
+        <div className="outer-grid inner-container">
+          <div className={`left-column`}>
+            <img className="logo" src={Logo} alt="logo" />
+          </div>
 
-        <div className="right-column">
-          <Link to="/Page2">Page 2</Link>
-          {/* Render the menu button*/}
+          <div className="right-column">
+            <Link to="/Page2">Page 2</Link>
+            {/* Render the menu button*/}
 
-          <Hamburger toggled={isMenuOpen} toggle={handleMenuButtonClick} />
+            <Hamburger toggled={isMenuOpen} toggle={handleMenuButtonClick} />
+          </div>
         </div>
       </div>
 
       {/* If the menu is open, render a list of links */}
-      <div className={`mobile-menu-container ${isMenuOpen ? "open" : ""}`}>
+      <div
+        className={`mobile-menu-container ${
+          isMenuOpen ? "open" : ""
+        } outer-grid`}
+      >
         <MobileLink to="/">Home</MobileLink>
         <MobileLink to="/Page2">Page 2</MobileLink>
       </div>
+
       <GlobalStyles />
     </HeaderWrapper>
   );

@@ -1,15 +1,22 @@
 import React from "react";
 import styled from "styled-components/macro";
-import GlobalStyles from "../Styles/GlobalStyles";
+import ContactForm from "../Components/ContactForm";
 
 //IMAGES
 import background from "../Images/background.jpg";
+import mockup from "../Images/mockup.png";
 
 //Components
 import Button from "../Components/Button";
 
 const HomeWrapper = styled.div`
   background: #e6e6e6;
+
+  .intro-section {
+    img {
+      width: 100%;
+    }
+  }
 `;
 
 const OpeningSectionWrapper = styled.div`
@@ -31,32 +38,30 @@ const Home = () => {
   return (
     <HomeWrapper>
       <OpeningSectionWrapper>
-        <div className="text-container">
-          <h1>Home Page</h1>
-          <p>
-            This is a barebones React template (made with your folder structure
-            etc.)
-          </p>
-          <Button href={"/Page2"}>Go to Page 2</Button>
+        <div className="outer-grid desktop-inner-grid">
+          <div className="text-container">
+            <h1>Home Page</h1>
+            <p>
+              This is a barebones React template (made with your folder
+              structure etc.)
+            </p>
+            <Button href={"/Page2"}>Go to Page 2</Button>
+          </div>
         </div>
       </OpeningSectionWrapper>
 
-      <div style={{ height: "100vh" }}>
+      <div className="outer-grid vertical-padding-normal desktop-inner-grid intro-section">
+        <h1>Welcome</h1>
         <p>
           This is some dummy copy. Lorem ipsum dolor sit amet, consectetur
           adipiscing elit. Phasellus in risus at libero molestie fringilla id id
-          mauris. Ut eget velit euismod, faucibus mi ac, tristique sapien.
-          Aliquam vel bibendum nulla. Praesent non turpis tellus. Vivamus
-          ultricies commodo leo quis venenatis. Duis vel libero in leo maximus
-          consequat.
+          mauris.
         </p>
-        <p>
-          Donec accumsan velit ac quam commodo, nec dictum tellus lobortis.
-          Morbi eu
-        </p>
+        <img src={mockup} alt="Mockup" />
       </div>
-
-      <GlobalStyles />
+      <div className="outer-grid vertical-padding-normal no-top desktop-inner-grid">
+        <ContactForm />
+      </div>
     </HomeWrapper>
   );
 };

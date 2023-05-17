@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components/macro";
-import GlobalStyles from "../Styles/GlobalStyles";
+import { Link } from "react-router-dom";
 
-const ButtonStyled = styled.a`
+const ButtonStyled = styled.div`
   // styles for a basic minimal rounded corner button
   background: transparent;
   border-radius: 4px;
@@ -18,11 +18,13 @@ const ButtonStyled = styled.a`
 
 const Button = (props) => {
   return (
-    <ButtonStyled type={props.type} href={props.href}>
-      {
-        props.children /* this injects the content from wherever its used as a HOC, that way you can call the button component and put your own text */
-      }
-    </ButtonStyled>
+    <Link to={props.href}>
+      <ButtonStyled type={props.type}>
+        {
+          props.children /* this injects the content from wherever its used as a HOC, that way you can call the button component and put your own text */
+        }
+      </ButtonStyled>
+    </Link>
   );
 };
 

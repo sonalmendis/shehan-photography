@@ -1,5 +1,6 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import ScrollToTopOnRouteChange from "./Components/ScrollToTop";
 
 import Index from "./Pages/Home.js";
 import Page2 from "./Pages/Page2.js"; // This can be any page
@@ -9,6 +10,7 @@ import Footer from "./Components/Footer.js"; // Likewise with footer (though unl
 function App() {
   return (
     <Router>
+      <ScrollToTopOnRouteChange />
       <Header />
       <div>
         <Routes>
