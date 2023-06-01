@@ -2,9 +2,14 @@ import React from "react";
 import styled from "styled-components/macro";
 import ContactForm from "../Components/ContactForm";
 
+import ScrollDownArrow from "../Components/ScrollDownArrow";
+
 //IMAGES
 import background from "../Images/background.jpg";
 import mockup from "../Images/mockup.png";
+
+import dummyImage from "../Images/dummy-image-small.jpg";
+import dummyImageLarge from "../Images/dummy-image-large.jpg";
 
 //Components
 import Button from "../Components/Button";
@@ -38,6 +43,7 @@ const Home = () => {
   return (
     <HomeWrapper>
       <OpeningSectionWrapper>
+        <ScrollDownArrow></ScrollDownArrow>
         <div className="outer-grid desktop-inner-grid">
           <div className="text-container">
             <h1>Home Page</h1>
@@ -57,6 +63,13 @@ const Home = () => {
           adipiscing elit. Phasellus in risus at libero molestie fringilla id id
           mauris.
         </p>
+
+        {/* This is an example of the best way to load responsive images with the <picture> tag.
+        Test it out by changing the browser width, make sure to reload without cache though*/}
+        <picture>
+          <source srcSet={`${dummyImage} 767w, ${dummyImageLarge} 1095w`} />
+          <img src={dummyImage} alt="Shrine" />
+        </picture>
         <img src={mockup} alt="Mockup" />
       </div>
       <div className="outer-grid vertical-padding-normal no-top desktop-inner-grid">

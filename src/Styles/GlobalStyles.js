@@ -4,25 +4,40 @@ import * as GlobalVariables from "../Styles/GlobalVariables";
 // Modern Normalize CSS
 import "./ModernNormalize.css";
 
-// Font installation method #1:
-import "../Fonts/sofiapro-light-webfont.woff";
-import "../Fonts/sofiapro-light-webfont.woff2";
+// Font installation method #1 (method #2 is in the public index file):
+import SofiaWoff from "../Fonts/sofiapro-light-webfont.woff";
+import SofiaWoff2 from "../Fonts/sofiapro-light-webfont.woff2";
 
 const GlobalStyle = createGlobalStyle`
 
-// For font installation method #1:
+/*
+FONTS
+IMPORTANT WARNING:
+Please do not use @import CSS syntax in createGlobalStyle at this time, as the CSSOM APIs we use in production do not handle it well. Instead, we recommend using a library such as react-helmet to inject a typical <link> meta tag to the stylesheet, or simply embedding it manually in your index.html <head> section for a simpler app.   
+
+THEREFORE IF FONTS ARE AVAILABLE ONLINE:
+Whenever possible place fonts in the <head> of the public folder, this is by far the least complicated way
+
+IF YOU CAN ONLY USE DOWNLOADED FONTS:
+use @font-face to import them, see below for an example
+*/
+
+/* Font installed:
+font-family: "acumin-pro", sans-serif;
+font-weight: 400;
+font-style: normal;
+*/
+
+
+// Font installation method #1:
 @font-face {
     font-family: 'Sofia Pro';
-    src: url('sofiapro-light-webfont.woff2') format('woff2'),
-         url('sofiapro-light-webfont.woff') format('woff');
+    src: url(${SofiaWoff}) format('woff2'),
+         url(${SofiaWoff2}) format('woff');
     font-weight: normal;
     font-style: normal;
 
 }
-
-// Font installation method #2 (no need to define @font-face):
-@import url("https://use.typekit.net/ihz1chw.css");
-
 
 *{
     box-sizing:border-box;
