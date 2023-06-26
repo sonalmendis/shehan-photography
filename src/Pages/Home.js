@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components/macro";
 import ContactForm from "../Components/ContactForm";
-
+import * as GlobalVariables from "../Styles/GlobalVariables";
+import { useMediaQuery } from "react-responsive"; // A must for detecting responsivity
 import ScrollDownArrow from "../Components/ScrollDownArrow";
 
 //IMAGES
@@ -40,11 +41,14 @@ const OpeningSectionWrapper = styled.div`
   }
 `;
 const Home = () => {
+  const isDesktop = useMediaQuery({
+    query: `${GlobalVariables.device.laptop}`,
+  }); // Use as required, a must for detecting responsivity, may be present in other components
   return (
     <HomeWrapper>
       <OpeningSectionWrapper>
         <ScrollDownArrow></ScrollDownArrow>
-        <div className="outer-grid desktop-inner-grid">
+        <div className="outer-grid desktop-inner-grid2">
           <div className="text-container">
             <h1>Home Page</h1>
             <p>
@@ -72,7 +76,7 @@ const Home = () => {
         </picture>
         <img src={mockup} alt="Mockup" />
       </div>
-      <div className="outer-grid vertical-padding-normal no-top desktop-inner-grid">
+      <div className="outer-grid vertical-padding-normal no-top desktop-inner-grid3">
         <ContactForm />
       </div>
     </HomeWrapper>

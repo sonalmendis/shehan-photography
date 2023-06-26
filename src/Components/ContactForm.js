@@ -8,7 +8,7 @@ import * as GlobalVariables from "../Styles/GlobalVariables";
 const FormStyled = styled.div`
   width: 100%; //change this to your liking
   @media ${GlobalVariables.device.laptop} {
-    width: 50vh; //change this to your liking
+    /* width: 50vh; //change this to your liking */
   }
   input,
   textarea {
@@ -129,7 +129,7 @@ Resets form on successful submission.
 
   return (
     <>
-      <div>
+      <div id="contact-form">
         <h1>Contact Us</h1>
         <FormStyled>
           <form onSubmit={handleSubmit(onSubmit)}>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Squash as Hamburger } from "hamburger-react"; // Animated hamburger icon
+import { Squash as Hamburger } from "hamburger-react"; // Animated hamburger icon#
+import { HashLink } from "react-router-hash-link"; // This is to enable smooth scrolling to the contact form or anything else with an ID hash jump
 import styled from "styled-components/macro";
 import GlobalStyles from "../Styles/GlobalStyles";
 import * as GlobalVariables from "../Styles/GlobalVariables";
@@ -36,7 +37,7 @@ const HeaderWrapper = styled.div`
 
   .left-column {
     .logo {
-      width: 104px;
+      width: 6.5em;
     }
   }
 
@@ -124,6 +125,13 @@ const Header = () => {
     backgroundColor: `rgba(0, 0, 0, ${backgroundOpacity})`,
   };
 
+  // This function is used to offset the scroll to the contact form when the contact link is clicked, it uses the react-router-hash-link package
+  const scrollWithOffset = (el) => {
+    const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
+    const yOffset = -100; // This is the offset, change this if you need to
+    window.scrollTo({ top: yCoordinate + yOffset, behavior: "smooth" });
+  };
+
   return (
     <HeaderWrapper>
       <div
@@ -138,6 +146,9 @@ const Header = () => {
           </div>
 
           <div className="right-column">
+            <HashLink to="/#contact-form" scroll={(el) => scrollWithOffset(el)}>
+              CONTACT
+            </HashLink>
             <Link to="/Page2">Page 2</Link>
             {/* Render the menu button*/}
 

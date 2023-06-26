@@ -1,14 +1,15 @@
 import React from "react";
 import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
+import * as GlobalVariables from "../Styles/GlobalVariables";
 
 const ButtonStyled = styled.div`
   // styles for a basic minimal rounded corner button
   background: transparent;
-  border-radius: 4px;
-  padding: 1rem 2rem;
-  font-size: 1.1rem;
-  font-family: "Sofia Pro"; // change this to your liking
+  border-radius: 0.25em;
+  padding: 1em 2em;
+  font-size: 1em;
+  font-family: ${GlobalVariables.fonts.primary};
   outline: none;
   border: 1px solid white;
   display: inline-block;
