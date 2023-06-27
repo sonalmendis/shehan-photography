@@ -50,10 +50,10 @@ const Home = () => {
         <ScrollDownArrow></ScrollDownArrow>
         <div className="outer-grid desktop-inner-grid2">
           <div className="text-container">
-            <h1>Home Page</h1>
+            <h1>Home Page (H1 with font1)</h1>
             <p>
               This is a barebones React template (made with your folder
-              structure etc.)
+              structure etc.) (p with font 2)
             </p>
             <Button href={"/Page2"}>Go to Page 2</Button>
           </div>

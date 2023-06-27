@@ -39,6 +39,7 @@ font-style: normal;
 
 }
 
+
 *{
     box-sizing:border-box;
 
@@ -49,7 +50,7 @@ html{
 
 body{
     font-size:16px;	
-    font-family: "acumin-pro", sans-serif;
+    font-family: ${GlobalVariables.fonts.font2};
     font-weight: 400;
     font-style: normal;
 
@@ -166,7 +167,7 @@ h1,h2,h3,h4,h5,p,li,span,ul{
 }
 
  h1{
-    font-family: 'Sofia Pro', sans-serif;
+    font-family: ${GlobalVariables.fonts.font1};
     margin-bottom: 0.6em;
  }
 

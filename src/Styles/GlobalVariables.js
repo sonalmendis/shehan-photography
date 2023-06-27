@@ -1,6 +1,7 @@
 // NOTE - fonts are not made here, please refer to GlobalStyles.js for more info, the variables are merely defined here
 export const fonts = {
-  primary: "Sofia Pro",
+  font1: `'acumin-pro', sans-serif`,
+  font2: `'Sofia Pro', sans-serif`,
 };
 
 export const colours = {
