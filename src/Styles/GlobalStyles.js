@@ -139,6 +139,9 @@ body.menu-expanded{
     padding-bottom: 1.25em;
     &.no-top{
         padding-top:0;
+    }
+    &.no-bottom{
+        padding-bottom:0;
     }   
 }
 .vertical-padding-normal{
@@ -147,6 +150,9 @@ body.menu-expanded{
     &.no-top{
         padding-top:0;
     }
+    &.no-bottom{
+        padding-bottom:0;
+    }   
 }
 .vertical-padding-large{
     padding-top: 6.25em;
@@ -154,7 +160,11 @@ body.menu-expanded{
     &.no-top{
         padding-top:0;
     }
+    &.no-bottom{
+        padding-bottom:0;
+    }   
 }
+
 
 
 /**********
