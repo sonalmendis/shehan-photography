@@ -191,5 +191,72 @@ p,li,a{
     font-size: 1em;
 }
 
+/**********
+ * ANIMATIONS
+ ********/
+
+.hidden{
+    opacity:0;
+    filter:blur(0.5em);
+    transform: translateY(1em);
+    transition: all 0.8s ease-in-out;
+    
+    /* transition: filter 0.8s ease-in-out 0.1s; */
+}
+
+.hidden-parent{
+    position:relative;
+    opacity:0;
+    filter:blur(0.5em);
+    transform: translateY(1em);
+    transition: all 0.8s ease-in-out;
+}
+.hidden-offset{
+    background:red;
+    height:10px;
+    width:10px;
+    position:absolute;
+    top: 7em; // If you make this a compenent you can pass in the top value as a prop
+}
+.animateLeft{
+    transform: translateX(-100%);
+}
+
+.show{
+    opacity:1;
+    transform: translateX(0);
+    transform: translateY(0);
+    filter:blur(0);
+}
+
+.delayMini{
+    transition-delay:0.4s;
+}
+
+.delay{
+    transition-delay:0.8s;
+}
+
+.delay2{
+    transition-delay:1.2s;
+}
+
+.delay3{
+    transition-delay:1.6s;
+}
+
+.delay4{
+    transition-delay:3.2s;
+}
+
+@media(prefers-reduced-motion){
+    .hidden{
+        transition:none;
+    }
+}
+
+
+
+
 `;
 export default GlobalStyle;
