@@ -47,5 +47,5 @@
   "devDependencies": {
     "babel-plugin-styled-components": "^2.1.1"
   },
-  "homepage": "https://vssbox.com/shehan-photography/"
+  "homepage": "."
 }
