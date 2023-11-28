@@ -1,5 +1,5 @@
 {
-  "name": "react-boilerplate-2023",
+  "name": "shehan-photogrpahy",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -11,9 +11,11 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.43.9",
     "react-responsive": "^9.0.2",
-    "react-router-hash-link": "^2.4.3",
+    "react-responsive-masonry": "^2.1.7",
     "react-router-dom": "^6.11.1",
+    "react-router-hash-link": "^2.4.3",
     "react-scripts": "5.0.1",
+    "react-scroll-parallax": "^3.4.2",
     "react-spinners": "^0.13.8",
     "styled-components": "^6.0.0-rc.6",
     "web-vitals": "^2.1.4"
@@ -45,5 +47,5 @@
   "devDependencies": {
     "babel-plugin-styled-components": "^2.1.1"
   },
-  "homepage": "."
+  "homepage": "https://vssbox.com/shehan-photography/"
 }

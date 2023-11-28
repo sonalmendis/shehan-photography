@@ -1,7 +1,8 @@
 // NOTE - fonts are not made here, please refer to GlobalStyles.js for more info, the variables are merely defined here
 export const fonts = {
-  font1: `'acumin-pro', sans-serif`,
-  font2: `'Sofia Pro', sans-serif`,
+  font1: `'Sofia Pro', sans-serif`,
+  font2: `'Lora', serif`,
+  font3: `'Seaweed Script', cursive`,
 };
 
 export const colours = {
@@ -14,13 +15,14 @@ export const size = {
   mobileM: "360px",
   mobileL: "425px",
   tablet: "768px",
-  laptop: "1030px",
+  laptop: "1024px",
   laptopL: "1440px",
   desktopL: "1920px",
   desktopXL: "2560px",
 };
 
 export const device = {
+  landscape: `(orientation: landscape)`,
   mobileM: `(min-width: ${size.mobileM})`,
   mobileL: `(min-width: ${size.mobileL})`,
   tablet: `(min-width: ${size.tablet})`,

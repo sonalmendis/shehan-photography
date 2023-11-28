@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Squash as Hamburger } from "hamburger-react"; // Animated hamburger icon#
-import { HashLink } from "react-router-hash-link"; // This is to enable smooth scrolling to the contact form or anything else with an ID hash jump
+import { HashLink, NavHashLink } from "react-router-hash-link"; // This is to enable smooth scrolling to the contact form or anything else with an ID hash jump
 import styled from "styled-components/macro";
 import GlobalStyles from "../Styles/GlobalStyles";
 import * as GlobalVariables from "../Styles/GlobalVariables";
-
-import Logo from "../Images/dummy logo.svg";
+import Button from "../Components/Button";
+import Logo from "../Images/logo-white.svg";
+import { useMediaQuery } from "react-responsive"; // A must for detecting responsivity
 
 // The mobile menu container is both offset by a negative margin AND has 0 opacity, that way it is not visible and does not take up space on the page
 
@@ -29,26 +30,39 @@ const HeaderWrapper = styled.div`
       display: flex;
       justify-content: space-between;
       align-items: center;
-
+      padding-top: 0.6em;
+      padding-bottom: 0.6em;
       z-index: 3;
       position: relative;
     }
   }
 
   .left-column {
+    display: flex;
+
+    align-items: center;
     .logo {
-      width: 6.5em;
+      width: 9.5em;
     }
   }
 
   // Hide the links on mobile and then show them on larger screens while hiding the button
   .right-column {
+    margin-top: -1.5%;
     a {
+      font-family: ${GlobalVariables.fonts.font1};
       display: none;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
     }
-    @media ${GlobalVariables.device.laptop} {
+    @media ${GlobalVariables.device.landscape} {
+      margin-top: 0;
       a {
         display: inline-block;
+        margin-right: 1em;
+        &:last-of-type {
+          margin-right: 0;
+        }
       }
       .hamburger-react {
         display: none;
@@ -57,15 +71,22 @@ const HeaderWrapper = styled.div`
   }
 
   .mobile-menu-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 21vh;
     height: 100vh;
+    backdrop-filter: blur(0.5em);
+    background-color: rgba(0, 0, 0, 0.8);
     margin-top: -150vh;
     opacity: 0;
     z-index: 2;
     transition: all 0.2s;
     color: white;
-    background: #393939;
+    width: 100%;
     padding-top: 20px;
-    padding-bottom: 20px;
+
     &.open {
       opacity: 1;
       margin-top: 0;
@@ -73,8 +94,9 @@ const HeaderWrapper = styled.div`
     a {
       display: block;
       cursor: pointer;
-      margin-bottom: 4vh;
-      font-size: 1.6rem;
+
+      margin-bottom: 3vh;
+      font-size: 2rem;
     }
   }
 `;
@@ -85,15 +107,25 @@ const Header = () => {
 
   // Define state variable to keep track of the background opacity
   const [backgroundOpacity, setBackgroundOpacity] = useState(0);
+  const isDesktop = useMediaQuery({
+    query: `${GlobalVariables.device.laptop}`,
+  });
 
   // Define a function to toggle the menu state when the button is clicked
-  const handleMenuButtonClick = () => {
-    setIsMenuOpen(!isMenuOpen);
-
-    // Toggle the body overflow to prevent scrolling when the menu is open
-    isMenuOpen
-      ? (document.body.style.overflow = "visible")
-      : (document.body.style.overflow = "hidden");
+  const handleMenuButtonClick = (el) => {
+    if (!isDesktop) {
+      if (isMenuOpen === true) {
+        setIsMenuOpen(false);
+        document.body.style.overflowY = "visible";
+      } else {
+        if (el.target && el.target.id === "header-logo") {
+          document.body.style.overflowY = "visible";
+        } else {
+          setIsMenuOpen(true);
+          document.body.style.overflowY = "hidden";
+        }
+      }
+    }
   };
 
   // Define the menu link tags as a function so each one gets an OnClick (to close the mobile menu when a link has been pressed)
@@ -135,24 +167,26 @@ const Header = () => {
   return (
     <HeaderWrapper>
       <div
-        className={`top-container ${
-          isMenuOpen ? "open" : ""
-        } vertical-padding-small`}
+        className={`top-container ${isMenuOpen ? "open" : ""} `}
         style={backgroundStyle}
       >
         <div className="outer-grid inner-container">
           <div className={`left-column`}>
-            <img className="logo" src={Logo} alt="logo" />
+            <NavHashLink to={"/#top"} onClick={handleMenuButtonClick}>
+              <img className="logo" src={Logo} alt="logo" />
+            </NavHashLink>
           </div>
 
           <div className="right-column">
-            <HashLink to="/#contact-form" scroll={(el) => scrollWithOffset(el)}>
-              CONTACT
-            </HashLink>
-            <Link to="/Page2">Page 2</Link>
+            <Link to="/gallery">Gallery</Link>
+            <NavHashLink to="/#contact-form">Contact Me</NavHashLink>
             {/* Render the menu button*/}
 
-            <Hamburger toggled={isMenuOpen} toggle={handleMenuButtonClick} />
+            <Hamburger
+              size={30}
+              toggled={isMenuOpen}
+              toggle={handleMenuButtonClick}
+            />
           </div>
         </div>
       </div>
@@ -163,8 +197,22 @@ const Header = () => {
           isMenuOpen ? "open" : ""
         } outer-grid`}
       >
-        <MobileLink to="/">Home</MobileLink>
-        <MobileLink to="/Page2">Page 2</MobileLink>
+        <div className="individual-link-container">
+          <MobileLink to="/gallery">Gallery</MobileLink>
+        </div>
+
+        <div className="individual-link-container">
+          <HashLink
+            to={{
+              pathname: "/",
+              hash: "#contact-form",
+              state: { fromExternalPage: true },
+            }}
+            onClick={handleMenuButtonClick}
+          >
+            Contact Me
+          </HashLink>
+        </div>
       </div>
 
       <GlobalStyles />

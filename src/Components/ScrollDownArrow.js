@@ -8,11 +8,15 @@ const ArrowStyle = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 5;
+    opacity:0;
+    filter: blur(1em);
+    transition: all 1.5s;
   .arrow {
 
     opacity: 0;
 position: absolute ;
-    top: 64%;
+    top: 88%;
 
     transform: translate3d(-50%,-50%,0);
     transform-origin: 50% 50%;
@@ -52,7 +56,7 @@ position: absolute ;
   @keyframes arrow-movement {
     0% {
       opacity: 0;
-      top: 62%;
+      top: 84%;
     }
     70% {
       opacity: 1;
@@ -65,7 +69,7 @@ position: absolute ;
 
 const ScrollDownArrow = (props) => {
   return (
-    <ArrowStyle>
+    <ArrowStyle className={props.className} id={props.id}>
       <div class="arrow arrow-first"></div>
       <div class="arrow arrow-second"></div>
     </ArrowStyle>

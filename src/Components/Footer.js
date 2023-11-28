@@ -5,14 +5,20 @@ import * as GlobalVariables from "../Styles/GlobalVariables";
 
 const FooterStyled = styled.div`
   background: black;
-  height:50px
-  width:100%;
-  color:white;
-  text-align:center;
+  font-family: ${GlobalVariables.fonts.font1};
+  height: 50px;
+  width: 100%;
+  color: white;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.1em;
+  font-size: 0.8em;
 `;
 
 const Footer = (props) => {
-  return <FooterStyled>copyright</FooterStyled>;
+  return <FooterStyled>©COPYRIGHT SHEHAN.K PHOTOGRAPHY</FooterStyled>;
 };
 
 export default Footer;

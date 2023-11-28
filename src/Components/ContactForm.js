@@ -5,30 +5,52 @@ import Loader from "../Images/loader.svg";
 
 import * as GlobalVariables from "../Styles/GlobalVariables";
 
+//  REMEMBER TO SET YOUR ACCES KEY
+// <input
+//   type="hidden"
+//   value="5dc80ba7-d9d1-43bd-9e92-7826a36d3490"
+//   {...register("access_key")}
+// />
+
 const FormStyled = styled.div`
+  background: white;
+  color: black;
   width: 100%; //change this to your liking
-  @media ${GlobalVariables.device.laptop} {
-    /* width: 50vh; //change this to your liking */
+  #contact-form {
+  }
+  h2 {
+    text-align: center;
   }
   input,
   textarea {
-    border-radius: 4px;
+    line-height: 1.3;
+    border-radius: 8px;
     border: 1px solid black;
     background: transparent;
-    padding: 10px;
+    padding: 1.5em 1em;
     resize: none;
     width: 100%;
+    font-family: "Sofia Pro";
+    &::placeholder {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+  }
+  textarea {
+    height: 200px;
   }
 
   .button-loader-container {
     position: relative;
   }
   button {
-    border-radius: 4px;
+    border-radius: 8px;
     border: 1px solid black;
     background: black;
     color: white;
-    padding: 10px;
+    padding: 1.5em 1em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
     resize: none;
     width: 100%;
     z-index: 2;
@@ -36,6 +58,7 @@ const FormStyled = styled.div`
     cursor: pointer;
     opacity: 1;
     transition: all 0.25s;
+    font-family: ${GlobalVariables.fonts.font1};
     &.loading {
       opacity: 0;
       visibility: hidden;
@@ -75,7 +98,7 @@ Uses useForm hook from react-hook-form library to manage form state and validati
 Uses useState hook to manage state of form submission and success/error messages.
 Submits form data to web3forms API endpoint.
 */
-export default function ContactForm() {
+export default function ContactForm(props) {
   const {
     register,
     handleSubmit,
@@ -96,6 +119,13 @@ Sets subject field value to "{name} sent a message from your website".
 Submits form data to web3forms API endpoint.
 Sets success and error messages based on API response.
 Resets form on successful submission.
+
+REMEMBER TO SET YOUR ACCES KEY
+            <input
+              type="hidden"
+              value="5dc80ba7-d9d1-43bd-9e92-7826a36d3490"
+              {...register("access_key")}
+            />
 */
   const onSubmit = async (data, e) => {
     console.log(data);
@@ -129,9 +159,9 @@ Resets form on successful submission.
 
   return (
     <>
-      <div id="contact-form">
-        <h1>Contact Us</h1>
-        <FormStyled>
+      <FormStyled>
+        <div id="contact-form" className={props.className}>
+          <h2>Work With Me</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
             {/*Various hidden inputs*/}
             <input
@@ -228,8 +258,8 @@ Resets form on successful submission.
               </div>
             </div>
           </form>
-        </FormStyled>
-      </div>
+        </div>
+      </FormStyled>
     </>
   );
 }

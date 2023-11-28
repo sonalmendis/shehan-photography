@@ -53,8 +53,15 @@ body{
     font-family: ${GlobalVariables.fonts.font2};
     font-weight: 400;
     font-style: normal;
-
     overflow-x: hidden;
+    color:white;
+    @media ${GlobalVariables.device.tablet} {
+        font-size: 3.3vw;}
+
+    
+    @media ${GlobalVariables.device.landscape} {
+        font-size: 16px;
+    }
 }
 body.menu-expanded{
     overflow:hidden;
@@ -86,14 +93,14 @@ body.menu-expanded{
 @media ${GlobalVariables.device.tablet} {
     .outer-grid{
         width: 96%;
-        max-width: 768px;
+        max-width: unset;
     
     }
 
 
 }
 
-@media ${GlobalVariables.device.laptop} {
+@media ${GlobalVariables.device.landscape} {
     .outer-grid{
         width: 96%;
         max-width:unset;
@@ -135,7 +142,7 @@ body.menu-expanded{
 // For most sizing you should use ems/%/vw, not px, use common sense e.g. font-size and margins should be em but border can be px
 
 .vertical-padding-small{
-    padding-top: 1.25em;
+    padding-top: 1em;
     padding-bottom: 1.25em;
     &.no-top{
         padding-top:0;
@@ -145,8 +152,8 @@ body.menu-expanded{
     }   
 }
 .vertical-padding-normal{
-    padding-top: 2.5em;
-    padding-bottom: 2.5em;
+    padding-top: 2em;
+    padding-bottom: 2em;
     &.no-top{
         padding-top:0;
     }
@@ -155,8 +162,8 @@ body.menu-expanded{
     }   
 }
 .vertical-padding-large{
-    padding-top: 6.25em;
-    padding-bottom: 6.25em;
+    padding-top: 4em;
+    padding-bottom: 4em;
     &.no-top{
         padding-top:0;
     }
@@ -177,8 +184,43 @@ h1,h2,h3,h4,h5,p,li,span,ul{
 }
 
  h1{
-    font-family: ${GlobalVariables.fonts.font1};
+    font-family: ${GlobalVariables.fonts.font3};
+    font-weight:300;
     margin-bottom: 0.6em;
+    font-weight:300;
+    font-size: 3.2em;
+    @media ${GlobalVariables.device.landscape} {
+        font-size: 5.6em;
+    }
+ }
+ h2{
+    font-family: ${GlobalVariables.fonts.font1};
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    margin-bottom: 1em;
+    font-weight:300;
+    font-size: 2em;
+    @media ${GlobalVariables.device.tablet} {
+        font-size:1.6em;
+    }
+    @media ${GlobalVariables.device.landscape} {
+    font-size: 2.2em;
+    margin-bottom: 0.8em;
+    }
+ }
+
+ h3{
+    font-family: ${GlobalVariables.fonts.font3};
+    font-size: 2.6em;
+    font-weight: 300;
+ }
+
+ h4{
+    font-family: ${GlobalVariables.fonts.font1};
+    text-transform:uppercase;
+    letter-spacing:0.15em;
+    font-weight:300;
+    font-size: 1em;
  }
 
  a{
@@ -188,7 +230,8 @@ h1,h2,h3,h4,h5,p,li,span,ul{
  }
 
 p,li,a{
-    font-size: 1em;
+    font-size: 0.9em;
+    line-height: 1.8em;
 }
 
 /**********
